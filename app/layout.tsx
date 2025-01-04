@@ -1,6 +1,6 @@
 "use client";
 
-import { initRelayEnvironment } from "@/src/RelayEnvironment";
+import { initRelayEnvironment } from "@/relay/RelayEnvironment";
 import { Geist, Geist_Mono } from "next/font/google";
 import { RelayEnvironmentProvider } from "react-relay";
 import "./globals.css";

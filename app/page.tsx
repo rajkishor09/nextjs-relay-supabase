@@ -1,6 +1,8 @@
 "use client";
 
+// TODO: update with your query
 import { pageRoleQuery } from "@/__generated__/pageRoleQuery.graphql";
+
 import { Suspense } from "react";
 import {
   graphql,
@@ -9,6 +11,7 @@ import {
   useQueryLoader,
 } from "react-relay";
 
+// TODO: example of using a query
 const UserRoleQuery = graphql`
   query pageRoleQuery {
     rolesCollection {

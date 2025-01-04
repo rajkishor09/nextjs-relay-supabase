@@ -6,23 +6,20 @@ import {
   Store,
 } from "relay-runtime";
 
-const HTTP_ENDPOINT = "http://127.0.0.1:54321/graphql/v1";
-
-export const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-export const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-export const SUPABASE_SERVICE_KEY =
-  process.env.NEXT_PUBLIC_SUPABASE_SERVICE_KEY!;
+const GRAPHQL_URL = process.env.GRAPHQL_URL!;
+const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const SUPABASE_SERVICE_KEY = process.env.NEXT_PUBLIC_SUPABASE_SERVICE_KEY!;
 
 const fetchFn: FetchFunction = async (request, variables) => {
-  const resp = await fetch(HTTP_ENDPOINT, {
+  const resp = await fetch(GRAPHQL_URL, {
     method: "POST",
     headers: {
       Accept:
         "application/graphql-response+json; charset=utf-8, application/json; charset=utf-8",
       "Content-Type": "application/json",
       apikey: SUPABASE_ANON_KEY,
-      Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
-      // <-- Additional headers like 'Authorization' would go here
+      Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`, // update this with session token
+      // <-- Additional headers would go here
     },
     body: JSON.stringify({
       query: request.text, // <-- The GraphQL document composed by Relay
